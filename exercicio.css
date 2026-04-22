@@ -24,21 +24,41 @@
  * estados dos animais. Algumas *sugestões*:
  *   - com-fome: animal piscando (opacidade variando)
  *   - satisfeito: uma borda verde no animal e o animal fica girando de alegria
- *   - com-raiva: animal fica pulsando
+ *   - com-raiva: animal fica pulsando (crescendo)
  *   - atacando: animal dá um salto e cresce, com uma borda vermelha
  */
 .com-fome {
+  animation: com-fome 0.8s linear 0s infinite;
+}
 
+@keyframes com-fome {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
 .satisfeito {
+  animation: girando 6s ease-in-out infinite alternate;
+}
 
+@keyframes girando {
+  from { transform: rotateY(0); border: 10px solid greenyellow;}
+  to   { transform: rotateY(3600deg); border: 10px solid greenyellow;}
 }
 
 .com-raiva {
+  animation: raiva 3s ease-in-out infinite;
+}
 
+@keyframes raiva {
+  from { transform: scale(1); opacity: 0.7; border: 5px solid red}
+  to { transform: scale(1.5); opacity: 1;  border: 5px solid red}
 }
 
 .atacando {
+  animation: ataque 1s linear infinite alternate;
+}
 
+@keyframes ataque {
+  from { transform: scale(1); opacity: 0.7; border: 10px solid red; transform: translateY(0%);}
+  to { transform: scale(2); opacity: 1; border: 10px solid red; transform: translateY(-30%);}
 }
